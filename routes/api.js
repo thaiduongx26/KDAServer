@@ -24,7 +24,7 @@ router.post('/createRoom', (req, res) => {
 		if(err){
 			console.log(err)
 		}
-		print("res: "+ results)
+		console.log("res: "+ results)
 		if(results.length == 0){
 			data = {
 				author1: auth1,
