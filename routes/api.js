@@ -18,7 +18,7 @@ router.get('/getChatroom/:userid', (req, res) => {
 router.post('/createRoom', (req, res) => {
 	auth1 = req.body.auth1
 	auth2 = req.body.auth2
-	Chatroom.findOne({
+	Chatroom.find({
 		$or: [{author1: auth1, author2: auth2}, {author1: auth2, author2: auth1}]
 	}).exec(function (err, results) {
 		if(err){
@@ -41,10 +41,10 @@ router.post('/createRoom', (req, res) => {
 				code: 200,
 				idRoom: chatroom._id.toString()
 			})
-		} else {
+		} else if(results.length == 1) {
 			res.json({
 				code: 400,
-				roomId: results._id.toString(),
+				roomId: results[0]._id.toString(),
 				message: "Room da ton tai"
 			})
 		}
