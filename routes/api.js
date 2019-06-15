@@ -21,6 +21,9 @@ router.post('/createRoom', (req, res) => {
 	Chatroom.findOne({
 		$or: [{author1: auth1, author2: auth2}, {author1: auth2, author2: auth1}]
 	}).exec(function (err, results) {
+		if(err){
+			console.log(err)
+		}
 		if(results.length == 0){
 			data = {
 				author1: auth1,
