@@ -25,10 +25,10 @@
   var socket = io('/chatroom', { transports: ['websocket'] });
   message = {
     type: 'text',
-    detail: 'fuck chet me thang vu anh',
-    auth: '5d050d5e068b23452980a2ac'
+    detail: 'vcl dmm vlxx',
+    auth: '5d07474acb0c78cf6f14cf0a'
   }
-  socket.emit('newMessage', '5d050d91f051014547f3cbca', message)
+  socket.emit('newMessage', '5d07a76f8d2b86775084ce87', message)
   socket.on('addMessage', function(roomid, message){
     console.log("id: " + roomid)
     console.log("mess: " + message.detail)

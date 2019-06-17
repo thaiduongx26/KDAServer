@@ -31,6 +31,7 @@
     "proxy-addr": "^2.0.3",
     "qs": "6.5.1",
     "range-parser": "^1.2.0",
+    "request": "^2.81.0",
     "safe-buffer": "5.1.1",
     "send": "0.16.2",
     "serve-static": "1.13.2",

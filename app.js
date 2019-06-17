@@ -40,10 +40,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api', api) // sample API Routes
 
+// a = {_id: "5d07a7588d2b86775084ce86",
+//     author1: "5d06094b046848a0fe30f474",
+//     author2: "5d04abfda4b183c7cbe98292",
+// 	date: "2019-06-17T14:44:40.683Z"
+// }
 
-io.on('connection', function(socket){
-	console.log('a user connected');
-});
+// a.partner = 123
+// console.log(a)
+
 
 
 module.exports = app
