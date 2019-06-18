@@ -45,15 +45,27 @@ router.get('/getChatroom/:userid', async function(req, res) {
 		a.room._id = value._id
 		a.room.author1 = value.author1
 		a.room.author2 = value.author2
-		a.room.lastMessage = value.chat[value.chat.length-1]
-		console.log(value) 
+		a.room.lastMessage = {}
+		a.room.lastMessage._id = value.chat[value.chat.length-1]._id
+		a.room.lastMessage.detail = value.chat[value.chat.length-1].detail
+		a.room.lastMessage.type = value.chat[value.chat.length-1].type
+		a.room.lastMessage.seen = value.chat[value.chat.length-1].seen
+		a.room.lastMessage.auth = value.chat[value.chat.length-1].auth
+		var d = String(value.chat[value.chat.length-1].createdAt)
+		console.log(d)
+		var arr = d.split(" ")
+		var arr2 = arr[4].split(":")
+		// var h = d.getHours();
+		// var m = d.getMinutes()
+		a.room.lastMessage.time = String(arr2[0]) + ":" + String(arr2[1])
+		// console.log(value) 
 		// if (i == 1){
 		// 	console.log(data)
 		// }
 		// console.log(a)
 		data.push(a)
 	}
-	console.log(data)
+	// console.log(data)
 	res.json(data)
 })
 
