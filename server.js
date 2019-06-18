@@ -14,6 +14,7 @@ app.get('/', function(req, res){
 });
 
 io.of('chatroom').on('connection', function(socket){
+  console.log("a connection")
   socket.on('newMessage', function(message){
     // message : {type, detail, auth}
     console.log(message)
