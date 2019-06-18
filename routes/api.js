@@ -52,11 +52,9 @@ router.get('/getChatroom/:userid', async function(req, res) {
 		a.room.lastMessage.seen = value.chat[value.chat.length-1].seen
 		a.room.lastMessage.auth = value.chat[value.chat.length-1].auth
 		var d = String(value.chat[value.chat.length-1].createdAt)
-		console.log(d)
+		// console.log(d)
 		var arr = d.split(" ")
 		var arr2 = arr[4].split(":")
-		// var h = d.getHours();
-		// var m = d.getMinutes()
 		a.room.lastMessage.time = String(arr2[0]) + ":" + String(arr2[1])
 		// console.log(value) 
 		// if (i == 1){
@@ -82,7 +80,21 @@ router.get('/getChat/:roomId', async function(req, res) {
 	// var i = 0
 	data.code = 200
 	data.message = "success"
-	data.chat = result.chat
+	data.chat = []
+	for(i = 0; i < result.chat.length; i++){
+		a = {}
+		a._id = result.chat[i]._id
+		a.detail = result.chat[i].detail
+		a.type = result.chat[i].type
+		a.seen = result.chat[i].seen
+		a.auth = result.chat[i].auth
+		var d = String(result.chat[i].createdAt)
+		// console.log(d)
+		var arr = d.split(" ")
+		var arr2 = arr[4].split(":")
+		a.time = String(arr2[0]) + ":" + String(arr2[1])
+		data.chat.push(a)
+	}
 	// console.log(data)
 	res.json(data)
 })
