@@ -14,12 +14,13 @@ app.get('/', function(req, res){
 });
 
 io.of('chatroom').on('connection', function(socket){
-  socket.on('newMessage', function(roomId, message){
+  socket.on('newMessage', function(message){
     // message : {type, detail, auth}
+    console.log(message)
     Chatroom.findOne({
-      _id: roomId
+      _id: message.roomId
     }).exec(function(err, res) {
-      console.log(res)
+      // console.log()
       ti = Date.now()
       chatroom = res
       newMess = {
@@ -38,7 +39,8 @@ io.of('chatroom').on('connection', function(socket){
           console.log("save chatroom error:  " + err)
         }
       })
-      socket.emit('addMessage', roomId, newMess)
+      newMess.roomId = message.roomId
+      socket.emit('addMessage', newMess)
     })
   })
 })
