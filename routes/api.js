@@ -56,6 +56,24 @@ router.get('/getChatroom/:userid', async function(req, res) {
 	res.json(data)
 })
 
+router.get('/getChat/:roomId', async function(req, res) {
+	roomId = req.params.roomId
+	// console.log(req.params.id)
+	let result = await  Chatroom.findOne({
+		_id: roomId 
+	}).then(response => {
+		return response;
+	});
+	console.log(result)
+	let data = {}
+	// var i = 0
+	data.code = 200
+	data.message = "success"
+	data.chat = result.chat
+	// console.log(data)
+	res.json(data)
+})
+
 router.post('/createRoom', (req, res) => {
 	auth1 = req.body.auth1
 	auth2 = req.body.auth2
