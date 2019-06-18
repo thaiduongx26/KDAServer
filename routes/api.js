@@ -38,7 +38,7 @@ router.get('/getChatroom/:userid', async function(req, res) {
 		} else {
 			auth2 = value['author1']
 		}
-		console.log(value) 
+		// console.log(value) 
 		let res = await doRequest('https://df4fb1f7.ngrok.io/user/' + auth2);
 		a.partner = JSON.parse(res)
 		a.room = {}
@@ -75,7 +75,7 @@ router.get('/getChat/:roomId', async function(req, res) {
 	}).then(response => {
 		return response;
 	});
-	console.log(result)
+	// console.log(result)
 	let data = {}
 	// var i = 0
 	data.code = 200
@@ -108,7 +108,7 @@ router.post('/createRoom', (req, res) => {
 		if(err){
 			console.log(err)
 		}
-		console.log("res: "+ results)
+		// console.log("res: "+ results)
 		if(results.length == 0){
 			data = {
 				author1: auth1,
