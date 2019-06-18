@@ -38,14 +38,18 @@ router.get('/getChatroom/:userid', async function(req, res) {
 		} else {
 			auth2 = value['author1']
 		}
-		console.log(auth2) 
-		let res = await doRequest('https://51560828.ngrok.io/user/' + auth2);
+		console.log(value) 
+		let res = await doRequest('https://df4fb1f7.ngrok.io/user/' + auth2);
 		a.partner = JSON.parse(res)
-		a.room = value
+		a.room = {}
+		a.room.author1 = value.author1
+		a.room.author2 = value.author2
+		a.room.lastMessage = value.chat[value.chat.length-1]
+		console.log(value) 
 		// if (i == 1){
 		// 	console.log(data)
 		// }
-		console.log(a)
+		// console.log(a)
 		data.push(a)
 	}
 	console.log(data)
