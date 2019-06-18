@@ -21,7 +21,7 @@
     </form>
   </body>
   <script src="/socket.io/socket.io.js"></script>
-<script>
+<!-- <script>
   var socket = io('/chatroom', { transports: ['websocket'] });
   message = {
     type: 'text',
@@ -34,5 +34,27 @@
     console.log("id: " + message.roomId)
     console.log("mess: " + message.detail)
   })
+</script> -->
+<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+<script>
+  $(function () {
+    var socket = io();
+    $('form').submit(function(e){
+      e.preventDefault(); // prevents page reloading
+      message = {
+        type: 'text',
+        detail: $('#m').val(),
+        auth: '5d07474acb0c78cf6f14cf0a',
+        roomId: "5d07a76f8d2b86775084ce87"
+      }
+      socket.emit('newMessage', message);
+      $('#m').val('');
+      return false;
+    });
+    socket.on('addMessage', function(msg){
+      $('#messages').append($('<li>').text(msg.detail));
+      console.log(msg)
+    });
+  });
 </script>
 </html>

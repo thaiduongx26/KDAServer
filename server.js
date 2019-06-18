@@ -13,8 +13,11 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/public/index.html');
 });
 
-io.of('chatroom').on('connection', function(socket){
+io.on('connection', function(socket){
   console.log("a connection")
+  socket.on('disconnect', function() {
+    console.log('Got disconnect!');
+  })
   socket.on('newMessage', function(message){
     // message : {type, detail, auth}
     console.log(message)
@@ -41,7 +44,7 @@ io.of('chatroom').on('connection', function(socket){
         }
       })
       newMess.roomId = message.roomId
-      socket.emit('addMessage', newMess)
+      io.emit('addMessage', newMess)
     })
   })
 })
