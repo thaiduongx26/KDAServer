@@ -2,13 +2,26 @@ from flask import Flask
 app = Flask(__name__)
 import numpy as np
 from flask import json
+from flask import request
+import base64
 
 listvocal = []
 dictvocal = {}
-reslession = []
+
+@app.route("/getScore", methods=["POST"])
+def getScore():
+    data = request.get_json()
+    word = data['word']
+    encode = data['encode']
+    # audiodata = base64.b64decode(encode)
+    filename = 'exam.txt'
+    with open(filename, 'wb') as f:
+        f.write(audiodata)
+    return "true"
 
 @app.route("/getLession")
 def getLession():
+    reslession = []
     lession1 = {
         "id": 1,
         "name": "Explore San Francisco",
