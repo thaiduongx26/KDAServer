@@ -105,4 +105,4 @@ if __name__ == '__main__':
     print(len(dictvocal["Lession2"]))
     print(len(dictvocal["Lession3"]))
     print(len(dictvocal["Lession4"]))
-    app.run(port=4000)
+    app.run(host="0.0.0.0", port=4000)
