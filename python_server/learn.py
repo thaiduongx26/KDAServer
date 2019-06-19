@@ -4,20 +4,73 @@ import numpy as np
 from flask import json
 from flask import request
 import base64
+from speech import take_response, text_to_speech
 
-listvocal = []
+listvocal = {}
 dictvocal = {}
+
+@app.route("/getSound/<word>")
+def getSound(word):
+    res = {"word": word}
+    res["audio"] = base64.b64encode(text_to_speech(word))
+    data = base64.b64decode(res["audio"])
+    with open('output1.wav', 'wb') as out:
+        # Write the response to the output file.
+        out.write(data)
+        print('Audio content written to file "output1.wav"')
+    return json.dumps(res)
 
 @app.route("/getScore", methods=["POST"])
 def getScore():
+    res = {}
     data = request.get_json()
     word = data['word']
     encode = data['encode']
-    # audiodata = base64.b64decode(encode)
-    filename = 'exam.txt'
-    with open(filename, 'wb') as f:
-        f.write(audiodata)
-    return "true"
+    audiodata = base64.b64decode(encode)
+    results = take_response(audiodata)
+    check = False
+    checksub = False
+    wordBig = ""
+    score = 0
+    for result in results:
+        if(word == result.alternatives[0].transcript.lower()):
+            check = True
+            score = result.alternatives[0].confidence
+        elif(word in result.alternatives[0].transcript.lower()):
+            checksub = True
+            wordBig = result.alternatives[0].transcript.lower()
+            if score == 0:
+                score = result.alternatives[0].confidence
+    score = int(float(score*100))
+    # print(type(score))
+    res["score"] = score
+    res["phonetic"] = []
+    res["word"] = word
+    phonetics = listvocal[word].split(" ")
+    for i in phonetics:
+        res["phonetic"].append({i: True})
+    if(not check):
+        if not checksub:
+            res["score"] = 0
+            res["phonetic"] = []
+            for i in phonetics:
+                res["phonetic"].append({i: False})
+        else:
+            res["phonetic"] = []
+            substr = wordBig.replace(word, '')
+            percent = len(substr) / len(wordBig)
+            num = int(len(phonetics) * percent)
+            if num == 0:
+                num = 1
+            elif num > len(phonetics):
+                num = len(phonetics)
+            for i in range(0, len(phonetics)):
+                if(len(phonetics) - i <= num):
+                    res["phonetic"].append({phonetics[i]: False})
+                else:
+                    res["phonetic"].append({phonetics[i]: True})        
+
+    return json.dumps(res)
 
 @app.route("/getLession")
 def getLession():
@@ -105,7 +158,7 @@ if __name__ == '__main__':
             if line != '':
                 vocal, phonetic = line.split("  ")
                 phonetic = phonetic[0:len(phonetic)-1]
-                listvocal.append([vocal, phonetic])
+                listvocal[vocal] = phonetic
                 if len(vocal) < 5:
                     dictvocal["Lession1"].append({"vocal":vocal, "phonetic":phonetic})
                 elif len(vocal) < 9:
@@ -118,4 +171,7 @@ if __name__ == '__main__':
     print(len(dictvocal["Lession2"]))
     print(len(dictvocal["Lession3"]))
     print(len(dictvocal["Lession4"]))
+    
+    # print(listvocal)
+    # print("aaaaaaaaaaaacccvvvvv".replace('ccc', ''))
     app.run(host="0.0.0.0", port=4000)
