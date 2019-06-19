@@ -30,14 +30,14 @@ def getLession():
                 "id":"lession11",
                 "difficult": "easy",
                 "name": "Lession 1 - Friday night plans",
-                "url_image_lession": "https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwidvPfoz_TiAhUKat4KHRiXCiQQjRx6BAgBEAU&url=https%3A%2F%2Floading.io%2Ficon%2Flnquqt-android-mobile-app-developer-programmer-coder-phone-device&psig=AOvVaw0JTeRbR7qo_3zYcrzTUKfb&ust=1561002017426893",
+                "url_image_lession": "https://loading.io/s/icon/lnquqt.svg",
                 "vocal": dictvocal["Lession1"][0:100]
             },
             {
                 "id":"lession12",
                 "difficult": "difficult",
                 "name": "Lession 2 - Los Angeles to San Francisco",
-                "url_image_lession": "https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwidvPfoz_TiAhUKat4KHRiXCiQQjRx6BAgBEAU&url=https%3A%2F%2Floading.io%2Ficon%2Flnquqt-android-mobile-app-developer-programmer-coder-phone-device&psig=AOvVaw0JTeRbR7qo_3zYcrzTUKfb&ust=1561002017426893",
+                "url_image_lession": "https://loading.io/s/icon/lnquqt.svg",
                 "vocal": dictvocal["Lession3"][0:100]
             }
         ]
@@ -50,14 +50,14 @@ def getLession():
                 "id":"lession21",
                 "difficult": "easy",
                 "name": "Lession 1 - Lets get creative with a study group",
-                "url_image_lession": "https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwidvPfoz_TiAhUKat4KHRiXCiQQjRx6BAgBEAU&url=https%3A%2F%2Floading.io%2Ficon%2Flnquqt-android-mobile-app-developer-programmer-coder-phone-device&psig=AOvVaw0JTeRbR7qo_3zYcrzTUKfb&ust=1561002017426893",
+                "url_image_lession": "https://loading.io/s/icon/lnquqt.svg",
                 "vocal": dictvocal["Lession2"][0:100]
             },
             {
                 "id":"lession22",
                 "difficult": "medium",
                 "name": "Lession 2 - 10 minutes to perfection",
-                "url_image_lession": "https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwidvPfoz_TiAhUKat4KHRiXCiQQjRx6BAgBEAU&url=https%3A%2F%2Floading.io%2Ficon%2Flnquqt-android-mobile-app-developer-programmer-coder-phone-device&psig=AOvVaw0JTeRbR7qo_3zYcrzTUKfb&ust=1561002017426893",
+                "url_image_lession": "https://loading.io/s/icon/lnquqt.svg",
                 "vocal": dictvocal["Lession3"][200:300]
             }
         ]
@@ -70,14 +70,14 @@ def getLession():
                 "id":"lession31",
                 "difficult": "difficult",
                 "name": "Lession 1 - To be awarded a scholarship",
-                "url_image_lession": "https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwidvPfoz_TiAhUKat4KHRiXCiQQjRx6BAgBEAU&url=https%3A%2F%2Floading.io%2Ficon%2Flnquqt-android-mobile-app-developer-programmer-coder-phone-device&psig=AOvVaw0JTeRbR7qo_3zYcrzTUKfb&ust=1561002017426893",
+                "url_image_lession": "https://loading.io/s/icon/lnquqt.svg",
                 "vocal": dictvocal["Lession4"][100:200]
             },
             {
                 "id":"lession32",
                 "difficult": "difficult",
                 "name": "Lession 2 - To be awarded a scholarship (harder version)",
-                "url_image_lession": "https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwidvPfoz_TiAhUKat4KHRiXCiQQjRx6BAgBEAU&url=https%3A%2F%2Floading.io%2Ficon%2Flnquqt-android-mobile-app-developer-programmer-coder-phone-device&psig=AOvVaw0JTeRbR7qo_3zYcrzTUKfb&ust=1561002017426893",
+                "url_image_lession": "https://loading.io/s/icon/lnquqt.svg",
                 "vocal": dictvocal["Lession1"][300:400]
             }
         ]
