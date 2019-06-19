@@ -13,11 +13,11 @@ dictvocal = {}
 def getSound(word):
     res = {"word": word}
     res["audio"] = base64.b64encode(text_to_speech(word))
-    data = base64.b64decode(res["audio"])
-    with open('output1.wav', 'wb') as out:
-        # Write the response to the output file.
-        out.write(data)
-        print('Audio content written to file "output1.wav"')
+    # data = base64.b64decode(res["audio"])
+    # with open('output1.wav', 'wb') as out:
+    #     # Write the response to the output file.
+    #     out.write(data)
+    #     print('Audio content written to file "output1.wav"')
     return json.dumps(res)
 
 @app.route("/getScore", methods=["POST"])
