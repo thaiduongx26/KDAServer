@@ -2,13 +2,18 @@ from flask import Flask
 app = Flask(__name__)
 import numpy as np
 from flask import json
-from flask import request
+from flask import request, send_from_directory
 import base64
 from speech import take_response, text_to_speech
 import test
 from tqdm import tqdm
 listvocal = {}
 dictvocal = {}
+
+@app.route('/sound/<filename>')
+def download_file(filename):
+    print(filename)
+    return send_from_directory('../../data/', filename)
 
 @app.route("/getSound/<word>")
 def getSound(word):
@@ -179,8 +184,8 @@ if __name__ == '__main__':
     print(len(dictvocal["Lession2"]))
     print(len(dictvocal["Lession3"]))
     print(len(dictvocal["Lession4"]))
-    totalword = dictvocal["Lession1"][0:100] + dictvocal["Lession3"][200:300] + dictvocal["Lession2"][0:100] + dictvocal["Lession3"][200:300] + dictvocal["Lession4"][100:200] + dictvocal["Lession1"][300:400]
-    print("len : {}".format(len(totalword)))
-    for i in tqdm(range(len(totalword))):
-        test.crawl(totalword[i]["vocal"], "data/")
+    # totalword = dictvocal["Lession1"][0:100] + dictvocal["Lession3"][200:300] + dictvocal["Lession2"][0:100] + dictvocal["Lession3"][200:300] + dictvocal["Lession4"][100:200] + dictvocal["Lession1"][300:400]
+    # print("len : {}".format(len(totalword)))
+    # for i in tqdm(range(len(totalword))):
+    #     test.crawl(totalword[i]["vocal"], "data/")
     app.run(host="0.0.0.0", port=4000)
