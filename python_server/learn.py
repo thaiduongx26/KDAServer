@@ -7,6 +7,7 @@ import base64
 from speech import take_response, text_to_speech
 import test
 from tqdm import tqdm
+import time
 listvocal = {}
 dictvocal = {}
 
