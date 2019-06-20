@@ -13,6 +13,7 @@ dictvocal = {}
 def getSound(word):
     res = {"word": word}
     res["audio"] = base64.b64encode(text_to_speech(word))
+    res["link"] = "35.247.180.113:4000/getSound/" + word 
     # data = base64.b64decode(res["audio"])
     # with open('output1.wav', 'wb') as out:
     #     # Write the response to the output file.
@@ -68,8 +69,15 @@ def getScore():
                 if(len(phonetics) - i <= num):
                     res["phonetic"].append({phonetics[i]: False})
                 else:
-                    res["phonetic"].append({phonetics[i]: True})        
-
+                    res["phonetic"].append({phonetics[i]: True})     
+    htmlres = ""   
+    for i in range(len(res["phonetic"])):
+        # print(listvocal[word].split(" ")[i])
+        if res["phonetic"][i][listvocal[word].split(" ")[i]]:
+            htmlres = htmlres + "<span style=\"color:red\"><strike>" + str(listvocal[word].split(" ")[i]) + " " + "</strike> </span>"
+        else:
+            htmlres = htmlres + "<span style=\"color:#30FF00\">" + str(listvocal[word].split(" ")[i]) + " " + "</span>"
+    res["result"] = htmlres
     return json.dumps(res)
 
 @app.route("/getLession")
