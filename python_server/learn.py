@@ -173,13 +173,13 @@ if __name__ == '__main__':
                 phonetic = phonetic[0:len(phonetic)-1]
                 listvocal[vocal] = phonetic
                 if len(vocal) < 5:
-                    dictvocal["Lession1"].append({"vocal":vocal, "phonetic":phonetic, "link": "35.247.180.113:4000/getSound/" + vocal})
+                    dictvocal["Lession1"].append({"vocal":vocal, "phonetic":phonetic, "link": "35.247.180.113:4000/sound/" + vocal + ".wav"})
                 elif len(vocal) < 9:
-                    dictvocal["Lession2"].append({"vocal":vocal, "phonetic":phonetic, "link": "35.247.180.113:4000/getSound/" + vocal})
+                    dictvocal["Lession2"].append({"vocal":vocal, "phonetic":phonetic, "link": "35.247.180.113:4000/sound/" + vocal + ".wav"})
                 elif len(vocal) < 11:
-                    dictvocal["Lession3"].append({"vocal":vocal, "phonetic":phonetic, "link": "35.247.180.113:4000/getSound/" + vocal})
+                    dictvocal["Lession3"].append({"vocal":vocal, "phonetic":phonetic, "link": "35.247.180.113:4000/sound/" + vocal + ".wav"})
                 else:
-                    dictvocal["Lession4"].append({"vocal":vocal, "phonetic":phonetic, "link": "35.247.180.113:4000/getSound/" + vocal})
+                    dictvocal["Lession4"].append({"vocal":vocal, "phonetic":phonetic, "link": "35.247.180.113:4000/sound/" + vocal +".wav"})
     print(len(dictvocal["Lession1"]))
     print(len(dictvocal["Lession2"]))
     print(len(dictvocal["Lession3"]))
