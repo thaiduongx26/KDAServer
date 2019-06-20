@@ -13,7 +13,7 @@ dictvocal = {}
 @app.route('/sound/<filename>')
 def download_file(filename):
     print(filename)
-    return send_from_directory('../../data/', filename)
+    return send_from_directory('data/', filename)
 
 @app.route("/getSound/<word>")
 def getSound(word):
