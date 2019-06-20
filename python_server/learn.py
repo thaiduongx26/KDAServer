@@ -72,7 +72,7 @@ def getScore():
     htmlres = ""   
     for i in range(len(res["phonetic"])):
         # print(listvocal[word].split(" ")[i])
-        if res["phonetic"][i][listvocal[word].split(" ")[i]]:
+        if not res["phonetic"][i][listvocal[word].split(" ")[i]]:
             htmlres = htmlres + "<span style=\"color:red\"><strike>" + str(listvocal[word].split(" ")[i]) + " " + "</strike> </span>"
         else:
             htmlres = htmlres + "<span style=\"color:#30FF00\">" + str(listvocal[word].split(" ")[i]) + " " + "</span>"
