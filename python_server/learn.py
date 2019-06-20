@@ -184,8 +184,10 @@ if __name__ == '__main__':
     print(len(dictvocal["Lession2"]))
     print(len(dictvocal["Lession3"]))
     print(len(dictvocal["Lession4"]))
-    # totalword = dictvocal["Lession1"][0:100] + dictvocal["Lession3"][200:300] + dictvocal["Lession2"][0:100] + dictvocal["Lession3"][200:300] + dictvocal["Lession4"][100:200] + dictvocal["Lession1"][300:400]
-    # print("len : {}".format(len(totalword)))
-    # for i in tqdm(range(len(totalword))):
-    #     test.crawl(totalword[i]["vocal"], "data/")
+    totalword = dictvocal["Lession1"][0:100] + dictvocal["Lession3"][200:300] + dictvocal["Lession2"][0:100] + dictvocal["Lession3"][200:300] + dictvocal["Lession4"][100:200] + dictvocal["Lession1"][300:400]
+    print("len : {}".format(len(totalword)))
+    for i in tqdm(range(len(totalword))):
+        if(i % 5 == 0):
+            time.sleep(1)
+        test.crawl(totalword[i]["vocal"], "data/")
     app.run(host="0.0.0.0", port=4000)
