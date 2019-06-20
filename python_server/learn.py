@@ -13,7 +13,6 @@ dictvocal = {}
 def getSound(word):
     res = {"word": word}
     res["audio"] = base64.b64encode(text_to_speech(word))
-    res["link"] = "35.247.180.113:4000/getSound/" + word 
     # data = base64.b64decode(res["audio"])
     # with open('output1.wav', 'wb') as out:
     #     # Write the response to the output file.
@@ -168,13 +167,13 @@ if __name__ == '__main__':
                 phonetic = phonetic[0:len(phonetic)-1]
                 listvocal[vocal] = phonetic
                 if len(vocal) < 5:
-                    dictvocal["Lession1"].append({"vocal":vocal, "phonetic":phonetic})
+                    dictvocal["Lession1"].append({"vocal":vocal, "phonetic":phonetic, "link": "35.247.180.113:4000/getSound/" + vocal})
                 elif len(vocal) < 9:
-                    dictvocal["Lession2"].append({"vocal":vocal, "phonetic":phonetic})
+                    dictvocal["Lession2"].append({"vocal":vocal, "phonetic":phonetic, "link": "35.247.180.113:4000/getSound/" + vocal})
                 elif len(vocal) < 11:
-                    dictvocal["Lession3"].append({"vocal":vocal, "phonetic":phonetic})
+                    dictvocal["Lession3"].append({"vocal":vocal, "phonetic":phonetic, "link": "35.247.180.113:4000/getSound/" + vocal})
                 else:
-                    dictvocal["Lession4"].append({"vocal":vocal, "phonetic":phonetic})
+                    dictvocal["Lession4"].append({"vocal":vocal, "phonetic":phonetic, "link": "35.247.180.113:4000/getSound/" + vocal})
     print(len(dictvocal["Lession1"]))
     print(len(dictvocal["Lession2"]))
     print(len(dictvocal["Lession3"]))
