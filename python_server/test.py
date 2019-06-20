@@ -15,13 +15,13 @@ def crawl(text, direc):
 
     # Select the type of audio file you want returned
     audio_config = texttospeech.types.AudioConfig(
-        audio_encoding=texttospeech.enums.AudioEncoding.LINEAR16)
+        audio_encoding=texttospeech.enums.AudioEncoding.MP3)
 
     # Perform the text-to-speech request on the text input with the selected
     # voice parameters and audio file type
     response = client.synthesize_speech(synthesis_input, voice, audio_config)
 
     # The response's audio_content is binary.
-    with open(direc+text+'.wav', 'wb') as out:
+    with open(direc+text+'.mp3', 'wb') as out:
         # Write the response to the output file.
         out.write(response.audio_content)
